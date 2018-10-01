@@ -1,0 +1,23 @@
+.data
+	message: .asciiz "Hi everyone. \n it was me dio.\n"
+.text
+	main:
+	    jal displayMessage #this jumps to the said function
+	    
+	    addi $s0, $zero, 5 #putting 5 in s0
+	    
+	    li $v0, 1 #loading an integer
+	    add $a0, $zero, $s0
+	    syscall
+	    
+	    		
+	#Tell te system that the program is done
+	li $v0, 10
+	syscall
+	
+	displayMessage:
+	    li $v0,4 #4 is code for displaying text
+	    la $a0, message
+	    syscall
+	
+	    jr $ra #this goes back to the procedure that called it
